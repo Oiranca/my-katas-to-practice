@@ -8,23 +8,20 @@ n= 5, m=5: 25
 n=-5, m=5:  0
 * */
 
+import { paperWorksNeed } from "./paperWoks";
 
-import {paperWorksNeed} from './paperWoks'
+describe("Calculate paperwoks i need", () => {
+  test("calculate paperWorks bigger than 0", () => {
+    const classmate = 5;
+    const paperWorks = 5;
 
-describe('Calculate paperwoks i need', () => {
-  test('calculate paperWorks bigger than 0', () => {
-	const classmate = 5;
-	const paperWorks = 5;
-	
-	expect(paperWorksNeed(classmate, paperWorks)).toBe(25)
-	
+    expect(paperWorksNeed(classmate, paperWorks)).toBe(25);
   });
-  
-  test('calculate paperWorks if less 0', () => {
-	const classmate = -5;
-	const paperWorks = 5;
-	
-	expect(paperWorksNeed(classmate, paperWorks)).toBe(0);
-	
-  })
-})
+
+  test("calculate paperWorks if less 0", () => {
+    const classmate = -5;
+    const paperWorks = 5;
+
+    expect(paperWorksNeed(classmate, paperWorks)).toBe(0);
+  });
+});
