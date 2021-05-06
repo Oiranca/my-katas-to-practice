@@ -19,23 +19,16 @@ Examples
 25  =>  true
 26  =>  false
 * */
-import {squareFunction} from './squares'
-describe('Squares numbers',()=>{
-  
-  test('this number is not possible to be square',()=>{
-    
-    
-    
+import { squareFunction } from "./squares";
+describe("Squares numbers", () => {
+  test("this number is not possible to be square", () => {
     expect(squareFunction(-1)).toBeFalsy();
     expect(squareFunction(3)).toBeFalsy();
     expect(squareFunction(26)).toBeFalsy();
   });
-  test('this number is possible to be square',()=>{
-    
-    
+  test("this number is possible to be square", () => {
     expect(squareFunction(0)).toBeTruthy();
     expect(squareFunction(4)).toBeTruthy();
     expect(squareFunction(25)).toBeTruthy();
-  })
-
-})
+  });
+});
