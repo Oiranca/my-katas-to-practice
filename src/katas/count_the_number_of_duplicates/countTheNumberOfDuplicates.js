@@ -1,15 +1,13 @@
-export const countTheDuplicates = (item) => {
-    let count = 0;
-    let c=0;
-    let d=0;
-    const order = [...item.toLowerCase()].sort();
-    for (const character of order) {
-        c=order.indexOf(character);
-        d=order.lastIndexOf(character);
-        if(c===d){
-            count++
-        }
-
+export const countTheDuplicates = (text) => {
+  const order = [...text.toLowerCase()].sort();
+  const characterRepeated = [];
+  order.forEach((character, index) => {
+    if (
+      !characterRepeated.includes(character) &&
+      character === order[index + 1]
+    ) {
+      characterRepeated.push(character);
     }
-    return count;
+  });
+  return characterRepeated.length;
 };

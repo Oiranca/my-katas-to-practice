@@ -13,17 +13,30 @@ Example
 "aA11" -> 2 # 'a' and '1'
 "ABBA" -> 2 # 'A' and 'B' each occur twice
 * */
-import {countTheDuplicates} from "./countTheNumberOfDuplicates";
+import { countTheDuplicates } from "./countTheNumberOfDuplicates";
 
-describe('search duplicate',()=>{
+describe("search duplicate", () => {
+  test("no duplicate", () => {
+    const stringDuplicate = "abcde";
 
-    test('same character',()=>{
-        const stringDuplicate='Indivisibilities';
+    const searchDuplicate = countTheDuplicates(stringDuplicate);
 
-        const searchDuplicate=countTheDuplicates(stringDuplicate);
+    expect(searchDuplicate).toBe(0);
+  });
 
-        expect(searchDuplicate).toBe(2);
+  test("same character", () => {
+    const stringDuplicate = "Indivisibilities";
 
-    })
+    const searchDuplicate = countTheDuplicates(stringDuplicate);
 
-})
+    expect(searchDuplicate).toBe(2);
+  });
+
+  test("not a number and numbers duplicate", () => {
+    const stringDuplicate = "aA11";
+
+    const searchDuplicate = countTheDuplicates(stringDuplicate);
+
+    expect(searchDuplicate).toBe(2);
+  });
+});
