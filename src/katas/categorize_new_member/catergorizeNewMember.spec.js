@@ -22,3 +22,28 @@ stating whether the respective member is to be placed in the senior or open cate
 Example Output
 ["Open", "Open", "Senior", "Open", "Open", "Senior"]
 * */
+
+import { newMemberCategorize } from "./categorizeNewMember";
+
+describe("new members", () => {
+  test("senior or open", () => {
+    const seniorMember = [
+      [18, 20],
+      [45, 2],
+      [61, 12],
+      [37, 6],
+      [21, 21],
+      [78, 9],
+    ];
+    const newMember = newMemberCategorize([seniorMember]);
+
+    expect(newMember).toEqual([
+      "Open",
+      "Open",
+      "Senior",
+      "Open",
+      "Open",
+      "Senior",
+    ]);
+  });
+});
