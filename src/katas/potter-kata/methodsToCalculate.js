@@ -2,49 +2,51 @@ const price = 8;
 
 const discount = {
   oneCopy: 0,
-  twoDifferentCopy: 0.005,
+  twoDifferentCopy: 0.05,
   threeDifferentCopy: 0.1,
   fourDifferentCopy: 0.2,
   fiveDifferentCopy: 0.25,
 };
 
-const allDifferent = (length) => {
+const allDifferent = (differentBooks) => {
   let totalWithoutDiscount;
   let totalToDiscount;
   let total = 0;
-  switch (length) {
+  switch (differentBooks) {
     case 1:
-      return (total = length * price);
+      return (total = differentBooks * price);
 
     case 2:
-      totalWithoutDiscount = length * price;
+      totalWithoutDiscount = differentBooks * price;
       totalToDiscount = totalWithoutDiscount * discount.twoDifferentCopy;
       return (total = totalWithoutDiscount - totalToDiscount);
     case 3:
-      totalWithoutDiscount = length * price;
+      totalWithoutDiscount = differentBooks * price;
       totalToDiscount = totalWithoutDiscount * discount.threeDifferentCopy;
       return (total = totalWithoutDiscount - totalToDiscount);
     case 4:
-      totalWithoutDiscount = length * price;
+      totalWithoutDiscount = differentBooks * price;
       totalToDiscount = totalWithoutDiscount * discount.fourDifferentCopy;
       return (total = totalWithoutDiscount - totalToDiscount);
     case 5:
-      totalWithoutDiscount = length * price;
+      totalWithoutDiscount = differentBooks * price;
       totalToDiscount = totalWithoutDiscount * discount.fiveDifferentCopy;
       return (total = totalWithoutDiscount - totalToDiscount);
   }
   return total;
 };
 
-export const totalToPay = (count, length) => {
-  return count * price + allDifferent(length);
+export const totalToPay = (count, buyLength) => {
+  const different = buyLength - count;
+  return count * price + allDifferent(different);
 };
 
 export const searchDifferentTitle = (titles) => {
   let count = 0;
 
-  titles.forEach((title, index) => {
-    titles[index] === titles[index + 1] ? count++ : count;
+  titles.forEach((title) => {
+    const sameTitle = titles.filter((item) => item === title);
+    sameTitle.length > 1 ? count++ : count;
   });
   return count;
 };

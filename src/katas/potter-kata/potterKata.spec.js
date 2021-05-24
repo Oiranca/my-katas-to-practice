@@ -28,78 +28,61 @@ of the fourth book 1 copy of the fifth book answer :
 30 + 21.60 = 51.60
 */
 
-import { copiesBuy } from "./potterKata";
-import { searchDifferentTitle, totalToPay } from "./methodsToCalculate";
+import { copiesBuy } from './potterKata';
 
-describe("total to pay", () => {
-  test("not buy books", () => {
-    const copies = 0;
+describe('total to pay', () => {
+  test('not buy books', () => {
     const titles = [];
 
-    const total = totalToPay(searchDifferentTitle(titles), titles.length);
     const toPay = copiesBuy(titles);
 
-    expect(toPay).toBe(total);
+    expect(toPay).toBe(0);
   });
-  test("only buy one book", () => {
-    const titles = ["First Title"];
+  test('only buy one book', () => {
+    const titles = ['First Title'];
 
-    const total = totalToPay(searchDifferentTitle(titles), titles.length);
     const toPay = copiesBuy(titles);
 
-    expect(toPay).toBe(total);
+    expect(toPay).toBe(8);
   });
 
-  test("two different books", () => {
-    const titles = ["First Title", "Second Title"];
-    const total = totalToPay(searchDifferentTitle(titles), titles.length);
+  test('two different books', () => {
+    const titles = ['First Title', 'Second Title'];
     const pay = copiesBuy(titles);
-    expect(pay).toBe(total);
+    expect(pay).toBe(15.2);
   });
-  test("three different books", () => {
-    const titles = ["First Title", "Second Title", "Third Title"];
-    const total = totalToPay(searchDifferentTitle(titles), titles.length);
+  test('three different books', () => {
+    const titles = ['First Title', 'Second Title', 'Third Title'];
     const pay = copiesBuy(titles);
-    expect(pay).toBe(total);
+    expect(pay).toBe(21.6);
   });
-  test("four different books", () => {
+  test('four different books', () => {
+    const titles = ['First Title', 'Second Title', 'Third Title', 'Fourth Title'];
+    const pay = copiesBuy(titles);
+    expect(pay).toBe(25.6);
+  });
+  test('five different books', () => {
     const titles = [
-      "First Title",
-      "Second Title",
-      "Third Title",
-      "Fourth Title",
+      'First Title',
+      'Second Title',
+      'Third Title',
+      'Fourth Title',
+      'FiTh Title',
     ];
-    const total = totalToPay(searchDifferentTitle(titles), titles.length);
     const pay = copiesBuy(titles);
-    expect(pay).toBe(total);
-  });
-  test("five different books", () => {
-    const titles = [
-      "First Title",
-      "Second Title",
-      "Third Title",
-      "Fourth Title",
-      "FiTh Title",
-    ];
-    const total = totalToPay(searchDifferentTitle(titles), titles.length);
-    const pay = copiesBuy(titles);
-    expect(pay).toBe(total);
+    expect(pay).toBe(30);
   });
 
-  test("same books", () => {
+  test('same books', () => {
     const titles = [
-      "First Title",
-      "First Title",
-      "Second Title",
-      "Second Title",
-      "Third Title",
-      "Third Title",
-      "Fourth Title",
-      "Fourth Title",
+      'First Title',
+      'First Title',
+      'Second Title',
+      'Third Title',
+      'Fourth Title',
     ];
 
-    const total = totalToPay(searchDifferentTitle(titles), titles.length);
     const pay = copiesBuy(titles);
-    expect(pay).toBe(total);
+    expect(pay).toBe(37.6);
   });
 });
