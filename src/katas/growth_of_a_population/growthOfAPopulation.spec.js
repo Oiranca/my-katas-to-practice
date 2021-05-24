@@ -29,21 +29,35 @@ Don't forget to convert the percent parameter as a percentage in the body of you
 if the parameter percent is 2 you have to convert it to 0.02.
 
 * */
-import { growthOfAPopulation } from "./growthOfAPopulation";
+import { growthOfAPopulation } from './growthOfAPopulation';
 
-describe("new habitans", () => {
-  test("five percent", () => {
-    const p0 = 1500;
+describe('new habitats', () => {
+  test('five percent', () => {
+    const initial = 1500;
     const percent = 5;
     const populationLeaveOrComing = 100;
     const populationToSurpass = 5000;
     const nbYear = growthOfAPopulation(
-      p0,
+      initial,
       percent,
       populationLeaveOrComing,
-      populationToSurpass
+      populationToSurpass,
     );
 
     expect(nbYear).toBe(15);
+  });
+  test('two dot five percent', () => {
+    const initial = 1500000;
+    const percent = 2.5;
+    const populationLeaveOrComing = 10000;
+    const populationToSurpass = 2000000;
+    const nbYear = growthOfAPopulation(
+      initial,
+      percent,
+      populationLeaveOrComing,
+      populationToSurpass,
+    );
+
+    expect(nbYear).toBe(10);
   });
 });

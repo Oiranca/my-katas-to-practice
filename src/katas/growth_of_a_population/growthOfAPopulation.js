@@ -1,14 +1,15 @@
-// TODO: Terminar Kata
-
 export const growthOfAPopulation = (
-  p0,
+  initial,
   percent,
   populationLeaveOrComing,
-  populationToSurpass
+  populationToSurpass,
 ) => {
   const percentCalculate = percent / 100;
-  const difPopulation = populationToSurpass - p0;
-  const newPopulationThisYear = p0 * percentCalculate + populationLeaveOrComing;
-
-  return difPopulation / newPopulationThisYear;
+  let count = 0;
+  let total = initial;
+  while (total < populationToSurpass) {
+    total = total + total * percentCalculate + populationLeaveOrComing;
+    count++;
+  }
+  return count;
 };
