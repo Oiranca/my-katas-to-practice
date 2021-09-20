@@ -5,11 +5,13 @@ export const newMemberCategorize = (data) => {
     SENIOR: "Senior",
   };
 
-  for (const [age, handicap] of data) {
-    age >= 55 && handicap > 7
-      ? typeMemberList.push(typeMember.SENIOR)
-      : typeMemberList.push(typeMember.OPEN);
-  }
+  data.forEach(member=>{
+    for (const [age,handicap] of member){
+      age >= 55 && handicap > 7
+          ? typeMemberList.push(typeMember.SENIOR)
+          : typeMemberList.push(typeMember.OPEN);
+    }
+  })
 
   return typeMemberList;
 };
