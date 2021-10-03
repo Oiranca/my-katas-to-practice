@@ -8,7 +8,7 @@
  * C antes de M 900
  * */
 
-export const RomanNumeral = (romanNumber) => {
+export const RomanNumeral = (roman) => {
   const values = {
     I: 1,
     V: 5,
@@ -19,13 +19,18 @@ export const RomanNumeral = (romanNumber) => {
     M: 1000,
   };
   let sum = 0;
-  for (let i = 0; i < [...romanNumber].length; i++) {
-    if (values[romanNumber[i]] < values[romanNumber[i + 1]]) {
-      sum += -values[romanNumber[i]] + values[romanNumber[i + 1]];
-      i = i + 1;
+  const arrayRomanNumber = [...roman];
+
+  for (let index = 0; index < arrayRomanNumber.length; index++) {
+    let valueCharacter = values[arrayRomanNumber[index]];
+    let valueNextCharacter = values[arrayRomanNumber[index + 1]];
+    if (valueCharacter < valueNextCharacter) {
+      sum += -valueCharacter + valueNextCharacter;
+      index = index + 1;
     } else {
-      sum += values[romanNumber[i]];
+      sum += valueCharacter;
     }
   }
+
   return sum;
 };
